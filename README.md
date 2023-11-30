@@ -4,16 +4,18 @@ A telnet-based microservice dedicated to serving up statistics and information a
 
 What sports are supported?
 ---------------------------
-KU football, KU basketball, KU baseball, and KU soccer.
+Only KU football right now.
+
+KU basketball (men's and women's), KU baseball, and KU soccer will be implemented when it's done™.
 
 Is there a demo server?
 -----------------------
-Yes, you can connect to it at [IP will be here] using any telnet client.
+When it's more complete, there will be.
 
 Why did you make this?
 -----------------------
-I heard stories of a Telnet server officially hosted by KU that could be used to quickly check sports info. Of course, said server doesn't exist anymore, but it gave me the idea to recreate it. Why not?
+I heard stories of a Telnet server officially hosted by KU in the olden days that could be used to quickly check sports info. Of course, said server doesn't exist anymore, but it gave me the idea to recreate it for fun. Why not?
 
 Can I fork it and make a Telnet server for my own team?
 -------------------------------------------------------
-Absolutely! I've even done all the legwork of dealing with ESPN's convoluted API for you, and made it pretty easy to modify the project for any college team. Try it out!
+Well, maybe later. It's unfinished in its current state. But I plan on doing all the legwork of dealing with ESPN's weirdly convoluted API for you, and making it easy to modify for any college team.
