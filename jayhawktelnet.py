@@ -11,7 +11,7 @@ class JayhawkTelnet:
     CFB_CONF_LOSSES = ""
     CFB_RECENT_GAME = ""
 
-    # Update stats every 5 minutes so people can't basically spam ESPN with requests
+    # Update stats every few minutes so people can't basically spam ESPN with requests
     async def update_stats():
         while True:
             cfb_stats = ESPNAPIManager.UpdateCFBStats()
