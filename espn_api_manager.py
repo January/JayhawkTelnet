@@ -29,5 +29,4 @@ class ESPNAPIManager:
                         last_game += e['score']['displayValue']
                         last_game += " vs. "
                         last_game += e['team']['displayName']
-                print(last_game)
-        return([win, loss, conf_win, conf_loss, last_game])
+        return({"wins": win, "losses": loss, "conf_wins": conf_win, "conf_losses": conf_loss, "last_game": last_game})
