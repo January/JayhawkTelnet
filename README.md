@@ -4,7 +4,7 @@ A telnet-based microservice dedicated to serving up statistics and information a
 
 What sports are supported?
 ---------------------------
-Only KU football and KU men's basketball right now.
+Only KU football and KU basketball (men's and women's) right now.
 
 KU basketball (women's), KU baseball, and KU soccer will be implemented when it's done™.
 

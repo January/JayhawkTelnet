@@ -19,6 +19,13 @@ class JayhawkTelnet:
     MENS_CBB_RECENT_GAME = ""
     MENS_CBB_SCHEDULE = ""
 
+    WOMENS_CBB_WINS = ""
+    WOWOMENS_CBB_LOSSES = ""
+    WOMENS_CBB_CONF_WINS = ""
+    WOMENS_CBB_CONF_LOSSES = ""
+    WOMENS_CBB_RECENT_GAME = ""
+    WOMENS_CBB_SCHEDULE = ""
+
     # Update stats every few minutes so people can't basically spam ESPN with requests
     async def update_stats():
         while True:
@@ -38,6 +45,14 @@ class JayhawkTelnet:
             JayhawkTelnet.MENS_CBB_RECENT_GAME = mens_cbb_stats['last_game']
             JayhawkTelnet.MENS_CBB_SCHEDULE = ESPNAPIManager.MensCBBSchedule()
 
+            womens_cbb_stats = ESPNAPIManager.UpdateWomensCBBStats()
+            JayhawkTelnet.WOMENS_CBB_WINS = womens_cbb_stats['wins']
+            JayhawkTelnet.WOMENS_CBB_LOSSES = womens_cbb_stats['losses']
+            JayhawkTelnet.WOMENS_CBB_CONF_WINS = womens_cbb_stats['conf_wins']
+            JayhawkTelnet.WOMENS_CBB_CONF_LOSSES = womens_cbb_stats['conf_losses']
+            JayhawkTelnet.WOMENS_CBB_RECENT_GAME = womens_cbb_stats['last_game']
+            JayhawkTelnet.WOMENS_CBB_SCHEDULE = ESPNAPIManager.WomensCBBSchedule()
+
             await asyncio.sleep(500)
 
     async def handler(reader, writer):
@@ -54,7 +69,12 @@ class JayhawkTelnet:
         writer.write(f"\r\nRecord: {JayhawkTelnet.MENS_CBB_WINS}-{JayhawkTelnet.MENS_CBB_LOSSES}")
         writer.write(f"\r\nConference record: {JayhawkTelnet.MENS_CBB_CONF_WINS}-{JayhawkTelnet.MENS_CBB_CONF_LOSSES}")
         writer.write(f"\r\nLast game: {JayhawkTelnet.MENS_CBB_RECENT_GAME}")
-        writer.write(f'\r\nUse command "mensbb" for the full men\'s basketball schedule.')
+        writer.write(f'\r\nUse command "mbasketball" for the full men\'s basketball schedule.')
+        writer.write(f"\r\n\r\nWomen's basketball stats:\r\n------------------------")
+        writer.write(f"\r\nRecord: {JayhawkTelnet.WOMENS_CBB_WINS}-{JayhawkTelnet.WOMENS_CBB_LOSSES}")
+        writer.write(f"\r\nConference record: {JayhawkTelnet.WOMENS_CBB_CONF_WINS}-{JayhawkTelnet.WOMENS_CBB_CONF_LOSSES}")
+        writer.write(f"\r\nLast game: {JayhawkTelnet.WOMENS_CBB_RECENT_GAME}")
+        writer.write(f'\r\nUse command "wbasketball" for the full women\'s basketball schedule.')
         command = ""
         while True:
             user_input = await reader.read(1)
@@ -71,6 +91,11 @@ class JayhawkTelnet:
                     case "mbasketball":
                         writer.write("\r\n")
                         for game in JayhawkTelnet.MENS_CBB_SCHEDULE:
+                            writer.write(f"\r\n{game}")
+                        writer.close()
+                    case "wbasketball":
+                        writer.write("\r\n")
+                        for game in JayhawkTelnet.WOMENS_CBB_SCHEDULE:
                             writer.write(f"\r\n{game}")
                         writer.close()
                     case default:
