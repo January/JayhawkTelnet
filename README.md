@@ -6,7 +6,7 @@ What sports are supported?
 ---------------------------
 Only KU football and KU basketball (men's and women's) right now.
 
-KU basketball (women's), KU baseball, and KU soccer will be implemented when it's done™.
+KU baseball, and KU soccer will be implemented when it's done™.
 
 Is there a demo server?
 -----------------------
